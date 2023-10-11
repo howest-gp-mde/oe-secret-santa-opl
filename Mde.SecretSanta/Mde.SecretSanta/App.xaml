@@ -3,6 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mde.SecretSanta.App">
     <Application.Resources>
+        <Color x:Key="ColorChristmasRed">#bc4749</Color>
+        <Color x:Key="ColorChristmasGreen">#a7c957</Color>
+        <Color x:Key="ColorChristmasGreener">#6a994e</Color>
+        <Color x:Key="ColorChristmasGreenest">#386641</Color>
+        <Color x:Key="ColorChristmasGray">#f2e8cf</Color>
 
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource ColorChristmasGreenest}"></Setter>
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="Page">
+            <Setter Property="BackgroundColor" Value="{StaticResource ColorChristmasGray}"></Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource ColorChristmasGreener}"></Setter>            
+        </Style>
     </Application.Resources>
 </Application>

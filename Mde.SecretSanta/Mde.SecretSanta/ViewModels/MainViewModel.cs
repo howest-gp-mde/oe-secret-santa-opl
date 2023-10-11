@@ -62,12 +62,21 @@ namespace Mde.SecretSanta.ViewModels
             await CoreMethods.DisplayAlert("You visited details ...", $"{visitCount} time(s)", "I know, right?!");
         }
 
-        private void AddParticipant()
+        private async void AddParticipant()
 		{
-            var participant = new Person() { FullName = Name };
-            _secretSantaService.AddParticipant(participant);
+			if (!string.IsNullOrEmpty(Name)) 
+			{
+				var participant = new Person() { FullName = Name };
+				_secretSantaService.AddParticipant(participant);
 
-			Participants = new ObservableCollection<Person>(_secretSantaService.GetParticipants());
+				Participants = new ObservableCollection<Person>(_secretSantaService.GetParticipants());
+				Name = "";
+			}
+
+			else
+			{
+                await CoreMethods.DisplayAlert("Yo ho ho!", $"Provide the name of a new person!", "Ok");
+            }
         }
     }
 }

@@ -5,26 +5,38 @@
 
     <StackLayout>
 
-        <ListView ItemsSource="{Binding Participants}" ItemTapped="ListView_ItemTapped">
+        <Label FontSize="Header">Santa's little helpers</Label>
+
+        <ListView ItemsSource="{Binding Participants}" 
+                  ItemTapped="ListView_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal">
+                        <StackLayout Margin="20" Orientation="Horizontal">
                             <Frame WidthRequest="40" 
                                    HeightRequest="40" 
-                                   BackgroundColor="Blue"
+                                   BackgroundColor="{StaticResource ColorChristmasRed}"
                                    CornerRadius="50"></Frame>
-                            <Label Text="{Binding FullName}"></Label>
+                            <Label Text="{Binding FullName}" VerticalOptions="Center"></Label>
                         </StackLayout>
                     </ViewCell>
-                </DataTemplate>
+                </DataTemplate> 
             </ListView.ItemTemplate>
         </ListView>
-        
-        <StackLayout Orientation="Horizontal">
-            <Label Text="{Binding Name}"></Label>
-            <Entry Text="{Binding Name}"></Entry>
-            <Button Text="+" Command="{Binding AddParticipantCommand}"></Button>
+
+        <StackLayout HorizontalOptions="Center" HeightRequest="100" Orientation="Horizontal">
+            <Entry Text="{Binding Name}" 
+                   WidthRequest="200"
+                   VerticalOptions="Center"
+                   Placeholder="Name of new helper ..."/>
+            <Button Text="+"
+                    FontAttributes="Bold"
+                    FontSize="21"
+                    VerticalOptions="Center"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    CornerRadius="50"
+                    Command="{Binding AddParticipantCommand}" />
         </StackLayout>
     </StackLayout>
 
