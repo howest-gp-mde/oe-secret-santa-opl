@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mde.SecretSanta.Pages.MainPage">
+
+    <StackLayout>
+
+        <ListView ItemsSource="{Binding Participants}" ItemTapped="ListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Frame WidthRequest="40" 
+                                   HeightRequest="40" 
+                                   BackgroundColor="Blue"
+                                   CornerRadius="50"></Frame>
+                            <Label Text="{Binding FullName}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Name}"></Label>
+            <Entry Text="{Binding Name}"></Entry>
+            <Button Text="+" Command="{Binding AddParticipantCommand}"></Button>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
