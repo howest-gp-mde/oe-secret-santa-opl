@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mde.SecretSanta.App">
+             x:Class="Mde.SecretSanta.App"
+             xmlns:conv="clr-namespace:Mde.SecretSanta.Domain.Converters">
     <Application.Resources>
+
+        <conv:NameToColorConverter x:Key="NameToColorConv"/>
+        <conv:NameToElfImageConverter x:Key="NameToElfImageConv"/>
+
         <Color x:Key="ColorChristmasRed">#bc4749</Color>
         <Color x:Key="ColorChristmasGreen">#a7c957</Color>
         <Color x:Key="ColorChristmasGreener">#6a994e</Color>

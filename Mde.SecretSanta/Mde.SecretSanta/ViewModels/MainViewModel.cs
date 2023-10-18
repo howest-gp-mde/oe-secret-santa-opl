@@ -52,7 +52,7 @@ namespace Mde.SecretSanta.ViewModels
         protected override void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
-            Participants = new ObservableCollection<Person>(_secretSantaService.GetParticipants());
+			RefreshParticipants();
         }
 
         public async override void ReverseInit(object returnedData)
@@ -69,7 +69,8 @@ namespace Mde.SecretSanta.ViewModels
 				var participant = new Person() { FullName = Name };
 				_secretSantaService.AddParticipant(participant);
 
-				Participants = new ObservableCollection<Person>(_secretSantaService.GetParticipants());
+				RefreshParticipants();
+				
 				Name = "";
 			}
 
@@ -77,6 +78,11 @@ namespace Mde.SecretSanta.ViewModels
 			{
                 await CoreMethods.DisplayAlert("Yo ho ho!", $"Provide the name of a new person!", "Ok");
             }
+        }
+
+		private void RefreshParticipants()
+		{
+            Participants = new ObservableCollection<Person>(_secretSantaService.GetParticipants());
         }
     }
 }

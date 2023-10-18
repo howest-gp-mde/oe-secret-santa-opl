@@ -5,20 +5,32 @@
 
     <StackLayout>
 
-        <Label FontSize="Header">Santa's little helpers</Label>
+        <Label FontSize="Large">Santa's little helpers</Label>
 
         <ListView ItemsSource="{Binding Participants}" 
-                  ItemTapped="ListView_ItemTapped">
+                  ItemTapped="ListView_ItemTapped"
+                  HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Margin="20" Orientation="Horizontal">
-                            <Frame WidthRequest="40" 
-                                   HeightRequest="40" 
-                                   BackgroundColor="{StaticResource ColorChristmasRed}"
-                                   CornerRadius="50"></Frame>
-                            <Label Text="{Binding FullName}" VerticalOptions="Center"></Label>
-                        </StackLayout>
+                        
+                        <Grid ColumnDefinitions="50, *" RowDefinitions="*">
+                            <Grid Grid.Column="0" Grid.Row="0"
+                                  ColumnDefinitions="50" RowDefinitions="50">
+                                
+                                <Frame Grid.Row="0" Grid.Column="0"
+                                       BackgroundColor="{Binding FullName, Converter={StaticResource NameToColorConv}}"
+                                       CornerRadius="50"
+                                       WidthRequest="25"
+                                       HeightRequest="50">
+                                </Frame>
+
+                                <Image Grid.Row="0" Grid.Column="0" 
+                                       Source="{Binding FullName, Converter={StaticResource NameToElfImageConv}}"></Image>
+                            </Grid>
+
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding FullName}" VerticalOptions="Center" />
+                        </Grid>
                     </ViewCell>
                 </DataTemplate> 
             </ListView.ItemTemplate>
