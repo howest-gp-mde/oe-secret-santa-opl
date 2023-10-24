@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mde.SecretSanta.Pages.MainPage">
+             x:Class="Mde.SecretSanta.Pages.MainPage"
+             xmlns:bhv="clr-namespace:Mde.SecretSanta.Behaviors"
+             xmlns:vms="clr-namespace:Mde.SecretSanta.ViewModels"
+             xmlns:models="clr-namespace:Mde.SecretSanta.Domain.Models"
+             x:DataType="vms:MainViewModel">
 
     <StackLayout>
 
@@ -11,7 +15,7 @@
                   ItemTapped="ListView_ItemTapped"
                   HasUnevenRows="True">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:Person">
                     <ViewCell>
                         
                         <Grid ColumnDefinitions="50, *" RowDefinitions="*">
@@ -40,7 +44,11 @@
             <Entry Text="{Binding Name}" 
                    WidthRequest="200"
                    VerticalOptions="Center"
-                   Placeholder="Name of new helper ..."/>
+                   Placeholder="Name of new helper ...">
+                <Entry.Behaviors>
+                    <bhv:ColorBehavior />
+                </Entry.Behaviors>
+            </Entry>
             <Button Text="+"
                     FontAttributes="Bold"
                     FontSize="21"
