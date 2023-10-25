@@ -1,4 +1,5 @@
 ﻿using FreshMvvm;
+using Mde.SecretSanta.Pages;
 using Mde.SecretSanta.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ namespace Mde.SecretSanta
         {
             InitializeComponent();
 
-            MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<MainViewModel>());
+            MainPage = new MockLoginPage();
         }
 
         protected override void OnStart()

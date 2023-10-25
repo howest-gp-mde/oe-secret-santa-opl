@@ -14,6 +14,7 @@ namespace Mde.SecretSanta.ViewModels
     public class MainViewModel : FreshBasePageModel
     {
 		private readonly ISecretSantaService _secretSantaService;
+		private readonly IHelloService _helloService;
 		private string name;
 
 		public string Name
@@ -25,6 +26,19 @@ namespace Mde.SecretSanta.ViewModels
 				RaisePropertyChanged(nameof(Name));
 			}
 		}
+
+		private string helloMessage;
+
+		public string HelloMessage
+		{
+			get { return helloMessage; }
+			set 
+			{ 
+				helloMessage = value;
+				RaisePropertyChanged();
+			}
+		}
+
 
 		private ObservableCollection<Person> participants;
 
@@ -41,6 +55,8 @@ namespace Mde.SecretSanta.ViewModels
 		public MainViewModel()
         {
 			_secretSantaService = new InMemorySecretSantaService();
+			_helloService = new HelloService();
+			HelloMessage = _helloService.SayHello();
         }
 
 		public ICommand AddParticipantCommand => new Command(AddParticipant);

@@ -9,7 +9,7 @@
 
     <StackLayout>
 
-        <Label FontSize="Large">Santa's little helpers</Label>
+        <Label FontSize="Large" Text="{Binding HelloMessage}"></Label>
 
         <ListView ItemsSource="{Binding Participants}" 
                   ItemTapped="ListView_ItemTapped"
