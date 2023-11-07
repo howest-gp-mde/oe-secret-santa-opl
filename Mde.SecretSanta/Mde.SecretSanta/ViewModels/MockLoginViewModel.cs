@@ -24,7 +24,7 @@ namespace Mde.SecretSanta.ViewModels
 
         public MockLoginViewModel()
         {
-            helloService = new HelloService();
+            this.helloService = FreshIOC.Container.Resolve<IHelloService>();
         }
 
         public ICommand LoginCommand => new Command(() =>

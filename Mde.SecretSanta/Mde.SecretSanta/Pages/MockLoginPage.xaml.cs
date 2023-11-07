@@ -1,4 +1,5 @@
-﻿using Mde.SecretSanta.ViewModels;
+﻿using Mde.SecretSanta.Domain.Services.Interfaces;
+using Mde.SecretSanta.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

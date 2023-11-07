@@ -8,7 +8,8 @@ namespace Mde.SecretSanta.Domain.Services
 {
     public class HelloService : IHelloService
     {
-        private static string username;
+        //not static anymore!
+        private string username;
         public string SayHello()
         {
             return $"Hello, {username}";

@@ -52,10 +52,10 @@ namespace Mde.SecretSanta.ViewModels
 			}
 		}
 
-		public MainViewModel()
+		public MainViewModel(ISecretSantaService secretSantaService, IHelloService helloService)
         {
-			_secretSantaService = new InMemorySecretSantaService();
-			_helloService = new HelloService();
+			_secretSantaService = secretSantaService;
+			_helloService = helloService;
 			HelloMessage = _helloService.SayHello();
         }
 
