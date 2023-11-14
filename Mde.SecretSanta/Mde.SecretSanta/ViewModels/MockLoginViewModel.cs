@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Mde.SecretSanta.ViewModels
@@ -30,6 +31,19 @@ namespace Mde.SecretSanta.ViewModels
         public ICommand LoginCommand => new Command(() =>
         {
             helloService.SetName(UserName);
+            //vibrate using xamarin.essentials <-> dependency service with own implementation
+            try
+            {
+                Vibration.Vibrate();
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
             Application.Current.MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<MainViewModel>());
         });
     }
