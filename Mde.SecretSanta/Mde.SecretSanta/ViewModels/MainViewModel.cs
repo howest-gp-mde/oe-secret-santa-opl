@@ -89,7 +89,14 @@ namespace Mde.SecretSanta.ViewModels
 			{
 				var participant = new Person() { FullName = Name };
 				_secretSantaService.AddParticipant(participant);
-                _informerService.InformUser();
+				try
+				{
+					_informerService.InformUser();
+				}
+				catch(Exception e)
+				{
+					await CoreMethods.DisplayAlert("Error", e.Message, "cancel");
+				}
                 RefreshParticipants();
 				
 				Name = "";
