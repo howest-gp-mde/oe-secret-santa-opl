@@ -15,6 +15,7 @@ namespace Mde.SecretSanta.ViewModels
     {
 		private readonly ISecretSantaService _secretSantaService;
 		private readonly IHelloService _helloService;
+		private readonly IInFormerService _informerService;
 		private string name;
 
 		public string Name
@@ -52,11 +53,15 @@ namespace Mde.SecretSanta.ViewModels
 			}
 		}
 
-		public MainViewModel(ISecretSantaService secretSantaService, IHelloService helloService)
+		public MainViewModel(
+			ISecretSantaService secretSantaService, 
+			IHelloService helloService,
+			IInFormerService inFormerService)
         {
 			_secretSantaService = secretSantaService;
 			_helloService = helloService;
-			HelloMessage = _helloService.SayHello();
+			_informerService = inFormerService;
+            HelloMessage = _helloService.SayHello();
         }
 
 		public ICommand AddParticipantCommand => new Command(AddParticipant);
@@ -84,8 +89,8 @@ namespace Mde.SecretSanta.ViewModels
 			{
 				var participant = new Person() { FullName = Name };
 				_secretSantaService.AddParticipant(participant);
-
-				RefreshParticipants();
+                _informerService.InformUser();
+                RefreshParticipants();
 				
 				Name = "";
 			}
@@ -94,6 +99,7 @@ namespace Mde.SecretSanta.ViewModels
 			{
                 await CoreMethods.DisplayAlert("Yo ho ho!", $"Provide the name of a new person!", "Ok");
             }
+
         }
 
 		private void RefreshParticipants()

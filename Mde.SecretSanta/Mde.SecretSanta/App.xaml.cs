@@ -18,7 +18,9 @@ namespace Mde.SecretSanta
             FreshIOC.Container.Register<ISecretSantaService, InMemorySecretSantaService>();
             FreshIOC.Container.Register<IHelloService, TimedHelloService>();
             //FreshIOC.Container.Register<ITimeable, TimestampService>();
-            FreshIOC.Container.Register<IHelloService, HelloService>().AsSingleton(); 
+            FreshIOC.Container.Register<IHelloService, HelloService>().AsSingleton();
+
+            FreshIOC.Container.Register(DependencyService.Get<IInFormerService>());
 
             MainPage = new MockLoginPage();
         }
